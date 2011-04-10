@@ -34,6 +34,9 @@ class Php <Formula
   if ARGV.include? '--with-intl'
     depends_on 'icu4c'
   end
+  if ARGV.include? '--with-readline'
+    depends_on 'readline'
+  end
   
   def options
    [
@@ -42,7 +45,8 @@ class Php <Formula
      ['--with-mssql', 'Include MSSQL-DB support'],
      ['--with-fpm', 'Enable building of the fpm SAPI executable'],
      ['--with-apache', 'Build shared Apache 2.0 Handler module'],
-     ['--with-intl', 'Include intl extension']
+     ['--with-intl', 'Include intl extension'],
+     ['--with-readline', 'Include readline extension']
    ]
   end
 
@@ -141,6 +145,10 @@ class Php <Formula
     if ARGV.include? '--with-intl'
       args.push "--enable-intl"
       args.push "--with-icu-dir=#{Formula.factory('icu4c').prefix}"
+    end
+    
+    if ARGV.include? '--with-readline'
+      args.push "--with-readline=#{Formula.factory('readline').prefix}"
     end
 
     return args
