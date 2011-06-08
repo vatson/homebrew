@@ -16,7 +16,6 @@ class Php <Formula
 
   depends_on 'libxml2'
   depends_on 'jpeg'
-  depends_on 'libpng'
   depends_on 'mcrypt'
   depends_on 'gettext'
   if ARGV.include? '--with-mysql'
@@ -96,16 +95,12 @@ class Php <Formula
       "--enable-gd-native-ttf",
       "--with-mcrypt=#{Formula.factory('mcrypt').prefix}",
       "--with-jpeg-dir=#{Formula.factory('jpeg').prefix}",
-      "--with-png-dir=#{Formula.factory('libpng').prefix}",
+      "--with-png-dir=/usr/X11",
+      "--with-freetype-dir=/usr/X11",
       "--with-gettext=#{Formula.factory('gettext').prefix}",
       "--with-tidy",
       "--mandir=#{man}"
     ]
-
-    # Free type support
-    if File.exist? "/usr/X11"
-      args.push "--with-freetype-dir=/usr/X11"
-    end
 
     # Bail if both php-fpm and apxs are enabled
     # http://bugs.php.net/bug.php?id=52419
@@ -158,6 +153,7 @@ class Php <Formula
     # Because for icu4c, we must link with c++ when building with intl extension
     ENV.append 'LDFLAGS', '-lstdc++' if ARGV.include? '--with-intl'
 
+    ENV.x11 # For freetype and libpng
     ENV.O3 # Speed things up
     system "./configure", *configure_args
 
