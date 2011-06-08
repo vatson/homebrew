@@ -20,7 +20,7 @@ class Php <Formula
   depends_on 'mcrypt'
   depends_on 'gettext'
   if ARGV.include? '--with-mysql'
-    depends_on 'mysql' => :recommended unless mysql_installed?
+    depends_on 'mysql' unless mysql_installed?
   end
   if ARGV.include? '--with-fpm'
     depends_on 'libevent'
