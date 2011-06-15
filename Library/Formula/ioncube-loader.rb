@@ -7,12 +7,12 @@ class IoncubeLoader < Formula
   packages = {
     :x86_64 => {
       :url => 'http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_dar_x86-64.tar.gz',
-      :md5 => '7031f1bd001062529273b93325954cfc',
+      :md5 => 'bf86cf3df0b98824b3cdad363aa5270e',
       :version => '4.0.8-x86_64'
     },
     :i386 => {
       :url => 'http://downloads2.ioncube.com/loader_downloads/ioncube_loaders_dar_x86.tar.gz',
-      :md5 => '8de18008a1f8a71320318631dd737e14',
+      :md5 => '1642d9d1549168971fa20bb520abb47e',
       :version => '4.0.8-i386'
     }
   }
