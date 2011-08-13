@@ -178,10 +178,6 @@ class Php <Formula
   end
 
  def caveats; <<-EOS
-   For 10.5 and Apache:
-    Apache needs to run in 32-bit mode. You can either force Apache to start 
-    in 32-bit mode or you can thin the Apache executable.
-   
    To enable PHP in Apache add the following to httpd.conf and restart Apache:
     LoadModule php5_module    #{prefix}/libexec/apache2/libphp5.so
 
