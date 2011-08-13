@@ -169,6 +169,9 @@ class Php <Formula
 
     system "cp ./php.ini-production #{prefix}/etc/php.ini"
 
+    # Fix pear permissions
+    system "chmod 644 #{prefix}/lib/php/.lock"
+
     if ARGV.include? '--with-fpm'
       (prefix+'org.php.php-fpm.plist').write startup_plist
       system "cp #{prefix}/etc/php-fpm.conf.default #{prefix}/etc/php-fpm.conf"
