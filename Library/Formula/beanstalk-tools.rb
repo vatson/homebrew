@@ -20,11 +20,11 @@ end
 class BeanstalkTools < Formula
   head 'https://github.com/dustin/beanstalk-tools.git'
   homepage 'https://github.com/dustin/beanstalk-tools'
-  
+
   depends_on 'beanstalk'
 
   def install
-    
+
     unless BeanstalkClient_Installed?
       onoe <<-EOS.undent
         This package requires beanstalk-client gem. Please install this gem:
@@ -37,5 +37,5 @@ class BeanstalkTools < Formula
     end
 
     prefix.install Dir['*']
-  end  
+  end
 end
